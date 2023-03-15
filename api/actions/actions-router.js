@@ -20,7 +20,7 @@ router.get('/', (req, res, next) => {
 })
 
 
-router.use((err, req, res, next) => {
+router.use((err, req, res, next) => { //eslint-disable-line
     res.status(err.status || 500).json({
         customMessage: 'something tragic happened inside the actions router',
         message: err.message,
