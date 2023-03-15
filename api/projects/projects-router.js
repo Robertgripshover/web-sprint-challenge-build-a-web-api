@@ -10,13 +10,15 @@ const Projects = require('./projects-model');
 
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-    Projects.get()
-        .then(projects => {
-            console.log(projects)
-            res.json(projects)
+router.get('/', async (req, res, next) => {
+    try { 
+        const result = await Projects.get({
+            project: req.body
         })
-        .catch(next)
+        res.status(200).json(result)
+    } catch (err) {
+        next(err)
+    }
 })
 
 router.get('/:id', validateProjectId, (req, res) => {
