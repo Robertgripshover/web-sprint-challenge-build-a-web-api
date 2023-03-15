@@ -1,6 +1,6 @@
 const express = require('express');
 
-// const { logger } = require('./projects/projects-middleware');
+const { logger } = require('./projects/projects-middleware');
 
 // const projectsRouter = require('./projects/projects-router');
 
@@ -10,7 +10,7 @@ const server = express();
 
 server.use(express.json());
 
-// server.use(logger);
+server.use(logger);
 
 // server.use('/api/projects', projectsRouter);
 
