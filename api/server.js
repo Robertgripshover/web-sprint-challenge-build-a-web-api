@@ -22,6 +22,10 @@ server.use('*', (req, res) => {
     })
 })
 
+server.get('/', (req, res) => {
+    res.send(`Let's write this sprint!!`)
+})
+
 
 // Configure your server here
 // Build your actions router in /api/actions/actions-router.js
