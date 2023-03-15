@@ -13,17 +13,17 @@ I need this code, but don't know where, perhaps should make some middleware, don
 
 Pull your server into this file and start it!
 */
+const server = require('./api/server')
 
+// const express = require('express')
 
-const express = require('express')
+// const server = express()
 
-const server = express()
+// server.use(express.json())
 
-server.use(express.json())
-
-server.get('/hello', (req, res) => {
-    res.json('hello there Bobby, you got this!')
-})
+// server.get('/hello', (req, res) => {
+//     res.json('hello there Bobby, you got this!')
+// })
 
 const port = process.env.PORT || 9000
 

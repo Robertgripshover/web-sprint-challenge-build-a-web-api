@@ -1,26 +1,26 @@
 const express = require('express');
 
-const { logger } = require('./projects/projects-middleware');
+// const { logger } = require('./projects/projects-middleware');
 
-const projectsRouter = require('./projects/projects-router');
+// const projectsRouter = require('./projects/projects-router');
 
-const actionsRouter = require('./actions/actions-router');
+// const actionsRouter = require('./actions/actions-router');
 
 const server = express();
 
 server.use(express.json());
 
-server.use(logger);
+// server.use(logger);
 
-server.use('/api/projects', projectsRouter);
+// server.use('/api/projects', projectsRouter);
 
-server.use('/api/actions', actionsRouter);
+// server.use('/api/actions', actionsRouter);
 
-server.use('*', (req, res) => {
-    res.status(404).json({
-        message: 'not found'
-    })
-})
+// server.use('*', (req, res) => {
+//     res.status(404).json({
+//         message: 'not found'
+//     })
+// })
 
 server.get('/', (req, res) => {
     res.send(`Let's write this sprint!!`)
