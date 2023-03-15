@@ -28,8 +28,22 @@ async function validateProjectId(req, res, next) {
     }
 }
 
+function validateProjectNameAndDescription(req, res, next) {
+    const {name, description} = req.body
+    if(!name || !name.trim() || !description || !description.trim()) {
+        res.status(400).json({
+            message: 'missing name or description'
+        })
+    } else {
+        req.name = name.trim()
+        next()
+    }
+}
+
+
 
 module.exports = {
     logger,
     validateProjectId,
+    validateProjectNameAndDescription,
 }
