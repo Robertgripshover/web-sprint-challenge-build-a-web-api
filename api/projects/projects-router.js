@@ -12,14 +12,13 @@ const router = express.Router();
 
 router.get('/', async (req, res, next) => {
     try { 
-        const result = await Projects.get({
-            project: req.body
-        })
+        const result = await Projects.get()
         res.status(200).json(result)
+        console.log(result)
     } catch (err) {
         next(err)
     }
-})
+}) //<< wip
 
 router.get('/:id', validateProjectId, (req, res) => {
     res.json(req.project)
