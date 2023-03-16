@@ -53,10 +53,6 @@ router.post('/', validateNewActionDetails, async (req, res, next) => {
   });//<< this is working ---
 
 
-
-
-
-
   router.put('/:id', validateActionId, validateNewActionDetails, (req, res, next) => {
     Actions.update(req.params.id, {
       name: req.name,
@@ -71,12 +67,6 @@ router.post('/', validateNewActionDetails, async (req, res, next) => {
     })
     .catch(next)
   });//<< this is working ---
-
-
-
-
-
-
 
 
 router.use((err, req, res, next) => { //eslint-disable-line

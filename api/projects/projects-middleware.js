@@ -11,7 +11,6 @@ function logger(req, res, next) {
     next();
 }
 
-
 async function validateProjectId(req, res, next) {
     try {
         const project = await Projects.get(req.params.id)
@@ -31,7 +30,7 @@ async function validateProjectId(req, res, next) {
 function validateProjectNameAndDescription(req, res, next) {
  
         const {name, description, completed} = req.body
-        
+
     if(!name || !description) {
         res.status(400).json({
             message: 'missing name or description'
@@ -44,11 +43,6 @@ function validateProjectNameAndDescription(req, res, next) {
     } 
 
 }  //<< this is working ---
-
-
-
-
-
 
 module.exports = {
     logger,

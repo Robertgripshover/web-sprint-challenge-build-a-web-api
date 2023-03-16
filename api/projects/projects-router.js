@@ -2,12 +2,7 @@
 
 const express = require('express');
 
-const {
-    validateProjectId,
-    validateProjectNameAndDescription,
-    
-
-} = require('./projects-middleware');
+const { validateProjectId, validateProjectNameAndDescription } = require('./projects-middleware');
 
 const Projects = require('./projects-model');
 
@@ -23,13 +18,10 @@ router.get('/', async (req, res, next) => {
     }
 }); //<< this is working ---
 
+
 router.get('/:id', validateProjectId, (req, res) => {
     res.json(req.project)
 }); //<< this is working ---
-
-
-
-
 
 
 router.get('/:id/actions', async (req, res, next) => {
@@ -40,7 +32,6 @@ router.get('/:id/actions', async (req, res, next) => {
     next(err)
   }
 }) //<< this is working ---
-
 
 
 router.post('/', validateProjectNameAndDescription, async (req, res, next) => {
@@ -70,7 +61,6 @@ router.post('/', validateProjectNameAndDescription, async (req, res, next) => {
 
 
 
-
   //One small error on here still VVVV
 
   router.put('/:id', validateProjectId, validateProjectNameAndDescription, (req, res, next) => {
@@ -91,9 +81,7 @@ router.post('/', validateProjectNameAndDescription, async (req, res, next) => {
 
   //One small error on here still ^^^^
 
-
-
-router.use((err, req, res, next) => { //eslint-disable-line
+  router.use((err, req, res, next) => { //eslint-disable-line
     res.status(err.status || 500).json({
         customMessage: 'something tragic happened inside the projects router',
         message: err.message,
