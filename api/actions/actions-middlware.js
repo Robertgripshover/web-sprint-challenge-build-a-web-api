@@ -29,8 +29,28 @@ async function validateActionId(req, res, next) {
 } //<< this is working ---
 
 
+function validateNewActionDetails(req, res, next) {
+ 
+    const {project_id, description, notes, completed} = req.body
+    console.log(req.body)
+if(!project_id || !description || !notes) {
+    res.status(400).json({
+        message: 'missing project_id, description or notes'
+    })
+} else {
+    req.project_id = project_id
+    req.description = description.trim()
+    req.notes = notes.trim()
+    req.completed = completed
+    next()
+} 
+
+}
+
+
 module.exports = {
     actionsLogger,
     validateActionId,
+    validateNewActionDetails,
 }
 

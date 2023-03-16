@@ -5,6 +5,7 @@ const express = require('express');
 
 const {
     validateActionId,
+    validateNewActionDetails,
 } = require('./actions-middlware');
 
 const Actions = require('../actions/actions-model') ;
@@ -24,6 +25,28 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', validateActionId, (req, res) => {
     res.json(req.action)
 }); //<< this is working ---
+
+
+
+
+
+router.post('/', validateNewActionDetails, async (req, res, next) => {
+    try {
+      const result = await Actions.insert({
+        project_id: req.project_id,
+        description: req.description,
+        notes: req.notes,
+        completed: req.completed
+      })
+      res.status(201).json(result)
+    } catch (err) {
+      next(err)
+    }
+  });
+
+
+
+
 
 
 router.use((err, req, res, next) => { //eslint-disable-line
