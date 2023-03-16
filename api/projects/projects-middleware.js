@@ -28,17 +28,71 @@ async function validateProjectId(req, res, next) {
     }
 } //<< this is working ---
 
-function validateProjectNameAndDescription(req, res, next) {
-    const {name, description} = req.body
-    if(!name || !name.trim() || !description || !description.trim()) {
+
+
+
+
+
+
+
+
+async function validateProjectNameAndDescription(req, res, next) {
+    try { 
+        const {name, description, completed} = req.body
+        console.log(req.body)
+    if(!name || !description) {
         res.status(400).json({
             message: 'missing name or description'
         })
     } else {
         req.name = name.trim()
+        req.description = description.trim()
+        req.completed = completed
         next()
+    } 
+    } catch (err) {
+        res.status(500).json({
+            message: "got to here with the error"
+        })
     }
-}
+
+} 
+
+// function validateName(req, res, next) {
+//    const {name} = req.body
+//    if(!name || !name.trim()) {
+//     res.status(400).json({
+//         message: "missing required name field"
+//     })
+//    } else {
+//     req.name = name.trim()
+//     next()
+//    }
+// }
+
+// function validateDescription(req, res, next) {
+//     const {description} = req.body
+//     if(!description || !description.trim()) {
+//      res.status(400).json({
+//          message: "missing required description field"
+//      })
+//     } else {
+//      req.description = description.trim()
+//      next()
+//     }
+//  }
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -46,4 +100,6 @@ module.exports = {
     logger,
     validateProjectId,
     validateProjectNameAndDescription,
+
+
 }
