@@ -28,19 +28,6 @@ router.get('/:id', validateProjectId, (req, res) => {
 }); //<< this is working ---
 
 
-
-
-
-// router.post('/', validateProjectId, validateProjectNameAndDescription, async (req, res, next) => {
-//     Projects.insert({name: req.name, description: req.description})
-//         .then(newProject => {
-//             res.status(201).json(newProject)
-//         })
-//         .catch(next)
-//   });
-
-
-
 router.post('/', validateProjectNameAndDescription, async (req, res, next) => {
     try {
       const result = await Projects.insert({
@@ -52,10 +39,17 @@ router.post('/', validateProjectNameAndDescription, async (req, res, next) => {
     } catch (err) {
       next(err)
     }
-  });
+  }); //<< this is working ---
 
 
-
+  router.delete('/:id', validateProjectId, async (req, res, next) => {
+    try {
+      await Projects.remove(req.params.id)
+      res.json(req.project)
+    } catch (err) {
+      next(err)
+    }
+  }); //<< this is working ---
 
 
 

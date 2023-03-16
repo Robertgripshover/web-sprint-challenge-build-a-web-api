@@ -27,9 +27,6 @@ router.get('/:id', validateActionId, (req, res) => {
 }); //<< this is working ---
 
 
-
-
-
 router.post('/', validateNewActionDetails, async (req, res, next) => {
     try {
       const result = await Actions.insert({
@@ -42,10 +39,12 @@ router.post('/', validateNewActionDetails, async (req, res, next) => {
     } catch (err) {
       next(err)
     }
-  });
+  }); //<< this is working ---
 
 
 
+
+  
 
 
 
