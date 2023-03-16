@@ -26,7 +26,7 @@ async function validateProjectId(req, res, next) {
             message: 'problem finding project'
         })
     }
-}
+} //<< this is working ---
 
 function validateProjectNameAndDescription(req, res, next) {
     const {name, description} = req.body

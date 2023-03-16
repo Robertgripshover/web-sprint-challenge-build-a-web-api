@@ -19,11 +19,11 @@ router.get('/', async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-});
+}); //<< this is working ---
 
 router.get('/:id', validateActionId, (req, res) => {
     res.json(req.action)
-});
+}); //<< this is working ---
 
 
 router.use((err, req, res, next) => { //eslint-disable-line

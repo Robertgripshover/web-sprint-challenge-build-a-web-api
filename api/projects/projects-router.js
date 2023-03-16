@@ -18,11 +18,11 @@ router.get('/', async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-}); //<< this one is working
+}); //<< this is working ---
 
 router.get('/:id', validateProjectId, (req, res) => {
     res.json(req.project)
-}); //<< this one is working
+}); //<< this is working ---
 
 
 router.post
