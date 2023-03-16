@@ -43,8 +43,19 @@ router.post('/', validateNewActionDetails, async (req, res, next) => {
 
 
 
+  router.delete('/:id', validateActionId, async (req, res, next) => {
+    try {
+      await Actions.remove(req.params.id)
+      res.json(req.project)
+    } catch (err) {
+      next(err)
+    }
+  });
 
-  
+
+
+
+
 
 
 
