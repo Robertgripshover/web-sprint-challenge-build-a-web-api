@@ -31,7 +31,7 @@ function validateProjectNameAndDescription(req, res, next) {
  
         const {name, description, completed} = req.body
 
-    if(!name || !description) {
+    if(!name || !description || typeof completed !== "boolean") {
         res.status(400).json({
             message: 'missing name or description'
         })
