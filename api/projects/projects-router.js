@@ -54,6 +54,18 @@ router.post('/', validateProjectNameAndDescription, async (req, res, next) => {
 
 
 
+  router.put('/:id', validateProjectId, validateProjectNameAndDescription, (req, res, next) => {
+    Projects.update(req.params.id, {name: req.name})
+      .then(() => {
+        return Projects.getById(req.params.id)
+      })
+      .then(user => {
+        res.json(user)
+      })
+      .catch(next)
+  });
+
+
 
 
 
