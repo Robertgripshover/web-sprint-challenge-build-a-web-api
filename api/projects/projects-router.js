@@ -28,6 +28,21 @@ router.get('/:id', validateProjectId, (req, res) => {
 }); //<< this is working ---
 
 
+
+
+
+
+router.get('/:id/actions', async (req, res, next) => {
+  try {
+    const result = await Projects.getProjectActions(req.params.id)
+    res.status(200).json(result)
+  } catch (err) {
+    next(err)
+  }
+}) //<< this is working ---
+
+
+
 router.post('/', validateProjectNameAndDescription, async (req, res, next) => {
     try {
       const result = await Projects.insert({
@@ -54,6 +69,10 @@ router.post('/', validateProjectNameAndDescription, async (req, res, next) => {
 
 
 
+
+
+  //One small error on here still VVVV
+
   router.put('/:id', validateProjectId, validateProjectNameAndDescription, (req, res, next) => {
     Projects.update(req.params.id, {
       name: req.name,
@@ -67,9 +86,10 @@ router.post('/', validateProjectNameAndDescription, async (req, res, next) => {
       res.json(project)
     })
     .catch(next)
-  });
+  }); 
 
 
+  //One small error on here still ^^^^
 
 
 

@@ -45,8 +45,8 @@ Inside `api/projects/projects-router.js` build the following endpoints:
   - Returns the newly created project as the body of the response.
   - If the request body is missing any of the required fields it responds with a status code 400.
 - [ ] `[PUT] /api/projects/:id`
-  - Returns the updated project as the body of the response.
-  - If there is no project with the given `id` it responds with a status code 404.
+  X Returns the updated project as the body of the response.
+  X If there is no project with the given `id` it responds with a status code 404.
   - If the request body is missing any of the required fields it responds with a status code 400.
 - [X] `[DELETE] /api/projects/:id`
   - Returns no response body.
@@ -66,7 +66,7 @@ Inside `api/actions/actions-router.js` build endpoints for performing CRUD opera
   - Returns the newly created action as the body of the response.
   - If the request body is missing any of the required fields it responds with a status code 400.
   - When adding an action make sure the `project_id` provided belongs to an existing `project`.
-- [ ] `[PUT] /api/actions/:id`
+- [X] `[PUT] /api/actions/:id`
   - Returns the updated action as the body of the response.
   - If there is no action with the given `id` it responds with a status code 404.
   - If the request body is missing any of the required fields it responds with a status code 400.

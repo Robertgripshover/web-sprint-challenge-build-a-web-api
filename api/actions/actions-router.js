@@ -50,7 +50,27 @@ router.post('/', validateNewActionDetails, async (req, res, next) => {
     } catch (err) {
       next(err)
     }
-  });
+  });//<< this is working ---
+
+
+
+
+
+
+  router.put('/:id', validateActionId, validateNewActionDetails, (req, res, next) => {
+    Actions.update(req.params.id, {
+      name: req.name,
+      description: req.description,
+      completed: req.completed
+    })
+    .then(() => {
+      return Actions.get(req.params.id)
+    })
+    .then(project => {
+      res.json(project)
+    })
+    .catch(next)
+  });//<< this is working ---
 
 
 

@@ -31,7 +31,7 @@ async function validateProjectId(req, res, next) {
 function validateProjectNameAndDescription(req, res, next) {
  
         const {name, description, completed} = req.body
-        console.log(req.body)
+        
     if(!name || !description) {
         res.status(400).json({
             message: 'missing name or description'
