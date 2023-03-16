@@ -11,13 +11,19 @@ const Actions = require('../actions/actions-model') ;
 
 const router = express.Router();
 
-router.get('/', (req, res, next) => {
-    Actions.get()
-        .then(actions => {
-            res.json(actions)
-        })
-        .catch(next)
-})
+router.get('/', async (req, res, next) => {
+    try { 
+        const result = await Actions.get()
+        res.status(200).json(result)
+        console.log(result)
+    } catch (err) {
+        next(err)
+    }
+});
+
+router.get('/:id', validateActionId, (req, res) => {
+    res.json(req.action)
+});
 
 
 router.use((err, req, res, next) => { //eslint-disable-line

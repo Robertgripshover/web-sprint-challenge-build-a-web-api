@@ -18,11 +18,14 @@ router.get('/', async (req, res, next) => {
     } catch (err) {
         next(err)
     }
-}) //<< wip
+}); //<< this one is working
 
 router.get('/:id', validateProjectId, (req, res) => {
     res.json(req.project)
-});
+}); //<< this one is working
+
+
+router.post
 
 router.use((err, req, res, next) => { //eslint-disable-line
     res.status(err.status || 500).json({
